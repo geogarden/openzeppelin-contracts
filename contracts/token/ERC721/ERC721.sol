@@ -84,7 +84,6 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     function symbol() public view virtual override returns (string memory) {
         return _symbol;
     }
-
     /**
      * @dev See {IERC721Metadata-tokenURI}.
      */
@@ -96,7 +95,6 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
             ? string(abi.encodePacked(baseURI, tokenId.toString()))
             : '';
     }
-
     /**
      * @dev Base URI for computing {tokenURI}. Empty by default, can be overriden
      * in child contracts.
@@ -151,17 +149,14 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata {
     function transferFrom(address from, address to, uint256 tokenId) public virtual override {
         //solhint-disable-next-line max-line-length
         require(_isApprovedOrOwner(_msgSender(), tokenId), "ERC721: transfer caller is not owner nor approved");
-
         _transfer(from, to, tokenId);
     }
-
     /**
      * @dev See {IERC721-safeTransferFrom}.
      */
     function safeTransferFrom(address from, address to, uint256 tokenId) public virtual override {
         safeTransferFrom(from, to, tokenId, "");
     }
-
     /**
      * @dev See {IERC721-safeTransferFrom}.
      */
